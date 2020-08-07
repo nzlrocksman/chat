@@ -22,6 +22,7 @@ class UserController{
         // Add all routing middleware for user endpoints
         AraDTApp.post('/register', this.register);
         AraDTApp.post('/login', this.login);
+        AraDTApp.get('/login', this.getLogin);
         AraDTApp.get('/logout', this.logout);
         AraDTApp.get('/account', this.getAccount);
         AraDTApp.post('/account', this.updateAccount);
@@ -114,10 +115,18 @@ class UserController{
         }
     };
 
+
+    getLogin(request, response, next) {
+        response.render('login')
+    }
+    getIndex(request, response, next) {
+        response.render('login')
+    }
+
     /* YOU NEED TO ADD COMMENTS FROM HERE ON */
 
     updateAccount =  async (request, response) => {
-
+        
         var currentUser = AraDTUserModel.getCurrentUser();
         if (currentUser) {
             try{
