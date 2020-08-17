@@ -21,6 +21,7 @@ class UserController{
 
         // Add all routing middleware for user endpoints
         AraDTApp.post('/register', this.register);
+        AraDTApp.get('/register', this.getRegister);
         AraDTApp.post('/login', this.login);
         AraDTApp.get('/login', this.getLogin);
         AraDTApp.get('/logout', this.logout);
@@ -74,7 +75,7 @@ class UserController{
                 }).catch((error) => {
                     // Firebase login has failed, so return Firebase errors
                     request.session.errors.login = [error.message];
-                    response.redirect('/');
+                    response.redirect('/login');
                 });
         } catch(errors) {
             // Form has failed validation, so return errors
@@ -115,6 +116,13 @@ class UserController{
         }
     };
 
+    getRegister(request, response, next) {
+        response.render('register')
+    }
+
+    getAccount(request, response, next) {
+        response.render('account')
+    }
 
     getLogin(request, response, next) {
         response.render('login')

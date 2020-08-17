@@ -11,22 +11,7 @@
     </head>
 	<body>
         <div class="page">
-            <div class="middle-holder">
-                <div class="middle">
-                    <div class="middle-header">Welcome Back</div>
-                    <form class="login-form" action="/login" method="post">
-                        <input type="email" name="email" placeholder="Email">
-                        <input type="password" name="password" placeholder="Password">
-                        <button type="submit">Login</button>
-                        <% if (locals.errors && locals.errors.login) { %>
-                            <% locals.errors.login.forEach(function(error) { %>
-                                <p class="alert alert-primary" role="alert"><%= error %></p>
-                            <% }) %>
-                        <% } %>
-                    </form>
-                    <a href="http://localhost:3000/register" class="go-register">Create Account</a>
-                </div>
-            </div>
+            Bruh it works
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
