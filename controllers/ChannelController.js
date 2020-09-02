@@ -40,7 +40,7 @@ class ChannelController{
     // Ignore this :-)
     showChannel = async (request, response, next) => {
         next();
-    }
+    } 
 
     
     /**
@@ -48,6 +48,8 @@ class ChannelController{
      */
     fetchChannels = async (request, response, next) => {
         
+        console.log('here!!!!!!!!!!!!!')
+
         if (!request.session.token) {
            response.redirect('/');
         }

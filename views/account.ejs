@@ -1,5 +1,15 @@
 <%- include('partials/header'); %> 
-    <div class="page">
-        Bruh it works
-    </div>
+<div class="account-main">
+    <form    action="/account" method="post" enctype="multipart/form-data">
+    <input type="text" name="displayName" placeholder="Display Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="file" name="avatar">
+        <button type="submit">Update</button>
+    </form>
+    <form action="/account" method="post">
+    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+    <button type="submit">Update Password</button>
+    </form>
+</div>
 <%- include('partials/footer'); %>
