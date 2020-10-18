@@ -114,6 +114,11 @@ a i {
   height: 15%;
 }
 
+.channelimages{
+  width: 75px;
+  height: 75px;
+}
+
 .login-form {
   display: inline-block;
 

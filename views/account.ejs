@@ -1,8 +1,25 @@
 <%- include('partials/header'); %>
 <div class="account-main">
     <form class="account-form" action="/account" method="post" enctype="multipart/form-data">
-    <input type="text" name="displayName" placeholder="Display Name">
-    <input type="email" name="email" placeholder="Email">
+    <% if (locals.user.photoURL) { %>
+        <label for="avatar">Current Avatar</label>
+        <p class="current-avatar">
+            <img src="<%= locals.user.photoURL %>" width="250px">
+        </p>
+        <% } %>
+    Signed in
+    <% if (locals.errors && locals.errors.profile) { %>
+        <% locals.errors.profile.forEach(function(error) { %>
+            <p class="alert alert-primary" role="alert"><%= error %></p>
+        <% }) %>
+    <% } %>
+    <% if (locals.errors && locals.errors.password) { %>
+        <% locals.errors.password.forEach(function(error) { %>
+            <p class="alert alert-primary" role="alert"><%= error %></p>
+        <% }) %>
+    <% } %>
+    <input type="text" name="displayName" placeholder="<%= locals.user.displayName %>">
+    <input type="email" name="email" placeholder="<%= locals.user.email %>">
     <input type="file" name="avatar">
         <button type="submit">Update</button>
     </form>

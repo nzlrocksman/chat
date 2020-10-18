@@ -4,6 +4,11 @@
             <div class="middle">
                 <div class="middle-header">Happy to have you along</div>
                 <form action="/register" method="post">
+                    <% if (locals.errors && locals.errors.register) { %>
+                        <% locals.errors.register.forEach(function(error) { %>
+                            <p class="alert alert-primary" role="alert"><%= error %></p>
+                        <% }) %>
+                    <% } %>
                     <input type="email" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Password">
                     <input type="password" name="passwordConfirm" placeholder="Confirm Password">

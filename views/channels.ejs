@@ -6,24 +6,29 @@ var channels = locals.channels
 var subscribed = ("subscribed" in  channels) ? channels.subscribed : false 
 %>
     <form id="channel-create-form" action="/channels/add" method="post" enctype="multipart/form-data">
-        <input type="text" class="form-control" name="name" placeholder="Display Name" value="">
-        <input type="file" class="custom-file-input" name="avatar" id="avatar-upload">
+        <input type="text" class="form-control" name="name" placeholder="Chanel Name" value="">
+        <div class="input-group">
+			<div class="custom-file">
+				<input type="file" name="avatar" class="custom-file-input" id="inputGroupFile01"
+				aria-describedby="inputGroupFileAddon01">
+				<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+			</div>
+		</div>
         <% if (users) { %>
             <% users.forEach(function(user) { %>
                 <input class="user-check-input" id="user<%= user.id %>" type="checkbox" name="users" value="<%= user.id %>">
-                <p><%= user.name %></p>
+				<p><%= user.name %></p>
             <% }) %>
         <% } %>
         <button id="update" type="submit">Create</button>
     </form>
-<%- include('partials/footer'); %>
 <div id="owned-channels" class="user-channels">
 	<h4>Your Channels</h4>
 <% if (owned) { %>
 	<ul>
 	<% owned.forEach(function(channel) { %>
 		<li>
-			<img src="<%= channel.image %>" alt="<%= channel.name %>">
+			<img class="channelimages" src="<%= channel.image %>" alt="<%= channel.name %>">
 			<a href="/channel/<%= channel.id %>/"><%= channel.name %></a>
 			<a href="/channels/delete/<%= channel.id %>/"><i class="fa fa-trash" aria-hidden="true"></i></a>
 		</li>
@@ -40,10 +45,11 @@ var subscribed = ("subscribed" in  channels) ? channels.subscribed : false
 	<ul>
 	<% subscribed.forEach(function(channel) { %>
 		<li>
-			<img src="<%= channel.image %>" alt="<%= channel.name %>">
+			<img class="channelimages" src="<%= channel.image %>" alt="<%= channel.name %>">
 			<a href="/channel/<%= channel.slug %>/"><%= channel.name %></a>
 		</li>
 	<% }) %>
 	</ul>
 <% }  %>
 </div>
+<%- include('partials/footer'); %>
